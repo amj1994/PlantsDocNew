@@ -4,7 +4,7 @@ const webhookRoutes = require('./src/routes/webhookRoutes');
 const paymentRoutes = require('./src/routes/paymentRoutes');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 
 // Special handling for Stripe webhooks - must be before express.json() middleware
 // to preserve raw body for signature verification
