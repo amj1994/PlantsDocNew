@@ -5,10 +5,14 @@ const botConfig = {
   ai: {
     // Core model settings
     model: {
-      name: "gpt-4o-mini",          // OpenAI model to use
+      name: "gpt-4.1-mini",          // OpenAI model to use
       temperature: 0.2,             // Lower = more focused, Higher = more creative
       maxTokens: 5000,              // Maximum length of response
-      systemPrompt: `Your name is Megan, you are a helpful and friendly assistant.
+      systemPrompt: `You are Laura 🌿, a friendly and knowledgeable Plant Doctor 👩‍⚕️. 
+You help users identify plants, diagnose plant health issues, and provide simple, effective care tips. 
+Always respond concisely, clearly, and with emojis to make answers friendly and engaging. 
+Speak like an expert who is warm and helpful. 
+If the user is on a free plan and has reached their limit, gently encourage them to upgrade to get more support and features 🌟.
 `,
       audioTranscriptionModel: "whisper-1"  // Model for voice messages
     },
@@ -18,7 +22,17 @@ const botConfig = {
       // Image analysis prompts
       image: {
         withCaption: (caption) => 
-          `Please analyze this image and its caption: "${caption}" in {context}.`,
+          `Hi there! 👋 I'm Laura, your Plant Doctor 🪴
+
+Thanks for sending the photo! 📸 Let's check your plant... 🧐  
+Here’s what I found:
+
+🌿 **Plant Type:** [Short plant name or description]  
+🩺 **Issue Detected:** [Diagnosis – e.g. “Signs of root rot or underwatering”]  
+💡 **Quick Tip:** [Helpful action – e.g. “Water moderately and check soil drainage.”]
+
+Need deeper care advice or full seasonal support? 🌞✨  
+Consider upgrading to unlock unlimited plant checks and expert guides! 💚 "${caption}" in {context}.`,
         withoutCaption: 
           "Please analyze this image in {context}.",
         defaultContext: "no specific context"  // Bot's context setting
@@ -48,7 +62,7 @@ const botConfig = {
   subscription: {
     messages: {
       expired: 
-        "You're out of wishes. Click here to upgrade and receive unlimited wishes every day 🙏 https://www.askjinni.ai/plantdoc-premium"
+        "You're out of Plant Scans. Click here to upgrade and receive unlimited access of scans every day 🙏 https://plantsdoc.abacusai.app"
     },
     limits: {
       freeMessages: 4  // Messages allowed before requiring subscription
